@@ -14,5 +14,5 @@ steps:
         "--platform",
         "managed",
         "--region",
-        "REGION",
+        "us-central1",
       ]
