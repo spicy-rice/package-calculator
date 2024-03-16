@@ -1,8 +1,8 @@
 steps:
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/my-first-project/gs", "."]
+    args: ["build", "-t", "gcr.io/avid-equator-417422/gs", "."]
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/my-first-project/gs"]
+    args: ["push", "gcr.io/avid-equator-417422/gs"]
   - name: "gcr.io/cloud-builders/gcloud"
     args:
       [
@@ -10,7 +10,7 @@ steps:
         "deploy",
         "package-calculator",
         "--image",
-        "gcr.io/my-first-project/gs",
+        "gcr.io/avid-equator-417422/gs",
         "--platform",
         "managed",
         "--region",
