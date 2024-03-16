@@ -16,7 +16,7 @@ func main() {
     }
 
     fs := http.FileServer(http.Dir("."))
-    http.Handle("/", fs) // Serve static files
+    http.Handle("/", fs) 
 
     http.HandleFunc("/calculate-packs", handleCalculatePacks)
 
@@ -46,7 +46,7 @@ func handleCalculatePacks(w http.ResponseWriter, r *http.Request) {
 }
 
 func loadConfig(configPath string) error {
-    fileBytes, err := os.ReadFile(configPath) // Updated from ioutil.ReadFile to os.ReadFile
+    fileBytes, err := os.ReadFile(configPath) 
     if err != nil {
         return err
     }
@@ -60,6 +60,6 @@ func loadConfig(configPath string) error {
     }
 
     packSizes = config.PackSizes
-    sort.Sort(sort.Reverse(sort.IntSlice(packSizes))) // Ensure pack sizes are sorted in descending order
+    sort.Sort(sort.Reverse(sort.IntSlice(packSizes))) 
     return nil
 }

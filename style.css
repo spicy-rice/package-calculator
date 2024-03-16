@@ -1,8 +1,8 @@
 body {
   padding-top: 20px;
-  font-family: "Montserrat", sans-serif; /* Changed font to Montserrat */
-  background-color: #f0f8ff; /* Light blue background color */
-  color: #333; /* Dark font color */
+  font-family: "Montserrat", sans-serif;
+  background-color: #f0f8ff;
+  color: #333;
 }
 
 .container {
@@ -14,7 +14,7 @@ body {
 .header {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Align items to the start of the container */
+  justify-content: flex-start;
   margin-bottom: 20px;
 }
 
@@ -37,7 +37,7 @@ h1 {
 
 .form-group label {
   font-weight: bold;
-  color: #555; /* Dark gray font color */
+  color: #555;
 }
 
 .form-control {
@@ -50,8 +50,8 @@ h1 {
 
 .form-control:focus {
   outline: 0;
-  border-color: #007bff; /* Focus border color */
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Focus box shadow */
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 .btn-primary {
@@ -60,7 +60,7 @@ h1 {
 }
 
 #result {
-  display: none; /* Hide the results container */
+  display: none;
   background-color: #fff;
   padding: 20px;
   margin-top: 20px;
@@ -79,7 +79,7 @@ h1 {
 }
 
 .result-item strong {
-  color: #007bff; /* Blue font color */
+  color: #007bff;
 }
 
 .btn-secondary {
@@ -87,5 +87,5 @@ h1 {
 }
 
 strong {
-  color: #000; /* Black font color */
+  color: #000;
 }

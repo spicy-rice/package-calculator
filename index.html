@@ -13,12 +13,12 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/x-icon" href="Gymshark-Emblem.png" />
+    <link rel="icon" type="image/x-icon" href="logo.png" />
   </head>
   <body>
     <div class="container mt-5">
       <div class="header">
-        <img src="Gymshark-Emblem.png" alt="Logo" class="logo" />
+        <img src="logo.png" alt="Logo" class="logo" />
         <h1 class="text-center title">Package Calculation Tool</h1>
       </div>
       <form id="packCalcForm">
@@ -50,6 +50,12 @@
     </div>
 
     <script>
+      function clearInput() {
+        document.getElementById("orderQuantity").value = "";
+        document.getElementById("result").innerHTML = "";
+        document.getElementById("result").style.display = "none";
+      }
+
       document
         .getElementById("packCalcForm")
         .addEventListener("submit", function (e) {
@@ -60,10 +66,10 @@
             .then((data) => {
               let resultHTML = `<h4 class="result-title">Result</h4> <p>For <strong>${orderQuantity}</strong> items, please send out:</p>`;
               for (let packSize in data) {
-                resultHTML += `<p class="result-item"><strong>${packSize}</strong> item pack: <strong>${data[packSize]}</strong></p>`;
+                resultHTML += `<p class="result-item"><strong>${packSize}</strong> item pack: <strong>x${data[packSize]}</strong></p>`;
               }
               document.getElementById("result").innerHTML = resultHTML;
-              document.getElementById("result").style.display = "block"; // Show the results container
+              document.getElementById("result").style.display = "block";
             })
             .catch((error) => console.error("Error:", error));
         });

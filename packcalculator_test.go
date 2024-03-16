@@ -8,7 +8,6 @@ import (
 )
 
 func TestCalculatePacksNeeded(t *testing.T) {
-    // Define packSizes for testing; this mirrors what you'd expect from your config
     testPackSizes := []int{5000, 2000, 1000, 500, 250}
 
 	tests := []struct {
@@ -39,7 +38,6 @@ func TestCalculatePacksNeeded(t *testing.T) {
 			expectedPacks: nil,
 			expectError:   true,
 		},
-		// Add more test cases as needed
 	}
 
 	for _, tt := range tests {
