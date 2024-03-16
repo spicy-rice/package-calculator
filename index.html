@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Package Calculation Tool</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="Gymshark-Emblem.png" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="header">
+        <img src="Gymshark-Emblem.png" alt="Logo" class="logo" />
+        <h1 class="text-center title">Package Calculation Tool</h1>
+      </div>
+      <form id="packCalcForm">
+        <div class="form-group">
+          <label for="orderQuantity">Enter total number of items:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="orderQuantity"
+            name="orderQuantity"
+            min="1"
+            required
+          />
+        </div>
+        <div class="text-center">
+          <button id="submitBtn" type="submit" class="btn btn-primary">
+            Calculate Packs
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="clearInput()"
+          >
+            Clear
+          </button>
+        </div>
+      </form>
+      <div id="result" class="mt-4"></div>
+    </div>
+
+    <script>
+      document
+        .getElementById("packCalcForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          var orderQuantity = document.getElementById("orderQuantity").value;
+          fetch(`/calculate-packs?orderQuantity=${orderQuantity}`)
+            .then((response) => response.json())
+            .then((data) => {
+              let resultHTML = `<h4 class="result-title">Result</h4> <p>For <strong>${orderQuantity}</strong> items, please send out:</p>`;
+              for (let packSize in data) {
+                resultHTML += `<p class="result-item"><strong>${packSize}</strong> item pack: <strong>${data[packSize]}</strong></p>`;
+              }
+              document.getElementById("result").innerHTML = resultHTML;
+              document.getElementById("result").style.display = "block"; // Show the results container
+            })
+            .catch((error) => console.error("Error:", error));
+        });
+    </script>
+  </body>
+</html>
