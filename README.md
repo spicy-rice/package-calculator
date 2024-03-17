@@ -36,3 +36,9 @@ Example `config.json`:
   "packSizes": [5000, 2000, 1000, 500, 250]
 }
 ```
+
+## Running Tests
+
+This application uses Testify for testing, to run the tests:
+
+Excute `go test -v` whilst in the root directory.
