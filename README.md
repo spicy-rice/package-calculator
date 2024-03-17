@@ -16,16 +16,8 @@ After installing Go, you can set up the Package Calculator application with the 
 2. Navigate to the cloned repository's directory:
    `cd package-calculator`
 
-3. Build the Go application:
-   `go build -o package-calculator .`
-
-This command compiles the application and generates an executable named `package-calculator` in the current directory. Replace `-o package-calculator` with the appropriate executable name for your operating system if needed, such as `package-calculator.exe` on Windows.
-
-4. Run the Go application:
-
-   `./package-calculator`
-
-On Windows, use: `.\package-calculator.exe`
+3. Run the Go application:
+   `go run .`
 
 ## Usage
 
