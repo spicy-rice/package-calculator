@@ -1,8 +1,8 @@
-# Package Calculator
+# Precise Parcel: Package Calculator tool
 
 ## Description
 
-The Package Calculator is a Go application that efficiently matches order quantities with specific package sizes. It is designed to help businesses determine the optimal packaging for any given number of items, using predefined package sizes.
+Precise Parcel is a Go application that efficiently matches order quantities with specific package sizes. It is designed to help businesses determine the optimal packaging for any given number of items, using predefined package sizes.
 
 ## Installation
 
