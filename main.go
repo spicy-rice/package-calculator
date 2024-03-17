@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"os"
 	"sort"
@@ -12,17 +13,22 @@ var packSizes []int
 
 func main() {
     if err := loadConfig("config.json"); err != nil {
-        panic(err)
+        log.Fatal(err)
     }
 
     fs := http.FileServer(http.Dir("."))
-    http.Handle("/", fs) 
+    http.Handle("/", fs)
 
     http.HandleFunc("/calculate-packs", handleCalculatePacks)
 
-    println("Server is running on http://localhost:8080")
-    if err := http.ListenAndServe(":8080", nil); err != nil {
-        panic(err)
+    port := os.Getenv("PORT")
+    if port == "" {
+        port = "8080" 
+    }
+
+    log.Printf("Server is running on port %s", port)
+    if err := http.ListenAndServe(":"+port, nil); err != nil {
+        log.Fatal(err) // If the server fails to start, log the error and stop the application
     }
 }
 
@@ -46,7 +52,7 @@ func handleCalculatePacks(w http.ResponseWriter, r *http.Request) {
 }
 
 func loadConfig(configPath string) error {
-    fileBytes, err := os.ReadFile(configPath) 
+    fileBytes, err := os.ReadFile(configPath)
     if err != nil {
         return err
     }
@@ -54,12 +60,11 @@ func loadConfig(configPath string) error {
     var config struct {
         PackSizes []int `json:"packSizes"`
     }
-
     if err = json.Unmarshal(fileBytes, &config); err != nil {
         return err
     }
 
     packSizes = config.PackSizes
-    sort.Sort(sort.Reverse(sort.IntSlice(packSizes))) 
+    sort.Sort(sort.Reverse(sort.IntSlice(packSizes)))
     return nil
 }
